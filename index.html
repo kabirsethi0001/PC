@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Attendance Portal</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#16181d;--mut:#6b7280;--bd:#dfe3e8;--ac:#2f5bea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1114;--card:#1a1d22;--tx:#eef0f3;--mut:#9aa1ad;--bd:#2c3038;--ac:#6b8cff}}
+:root[data-theme="dark"]{--bg:#0f1114;--card:#1a1d22;--tx:#eef0f3;--mut:#9aa1ad;--bd:#2c3038;--ac:#6b8cff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;padding:0 0 90px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 8px) 12px 8px;border-bottom:1px solid var(--bd)}
+.dt{font-size:18px;font-weight:800;margin:0 0 6px}
+.row{display:flex;gap:6px;align-items:center}
+input[type=date]{flex:1;min-width:0;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font:inherit;font-size:15px}
+.cnt{font-size:12px;color:var(--mut);margin-top:6px}
+.leg{font-size:11px;color:var(--mut);padding:6px 12px 0}
+.list{padding:8px 12px}
+.r{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px;margin-bottom:6px}
+.n{font-weight:600;font-size:15px;margin-bottom:6px}.n i{font-style:normal;color:var(--mut);font-weight:400;display:inline-block;min-width:22px}
+.g{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+button{font:inherit;touch-action:manipulation;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:8px;cursor:pointer}
+.o{font-size:11.5px;padding:9px 0;background:transparent}
+.o.on{color:#fff;font-weight:700;border-color:transparent}
+.o.on[data-s="0"]{background:#16a34a}.o.on[data-s="1"]{background:#dc2626}.o.on[data-s="2"]{background:#d97706}.o.on[data-s="3"]{background:#7c3aed}.o.on[data-s="4"]{background:#2563eb}
+.sm{font-size:13px;padding:8px 10px}
+.out{padding:0 12px 12px}
+.pv{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;line-height:1.55;font-size:14px}
+textarea{width:100%;height:160px;margin-top:8px;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:13px/1.45 ui-monospace,Menlo,monospace}
+.bot{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--bg);border-top:1px solid var(--bd);padding:8px 12px calc(env(safe-area-inset-bottom,0px) + 8px);display:flex;gap:8px}
+.bot button{flex:1;background:var(--ac);color:#fff;border-color:var(--ac);font-weight:700;font-size:14px;padding:12px 6px}
+.msg{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:#16a34a;color:#fff;padding:8px 14px;border-radius:20px;font-size:13px;display:none;z-index:9}
+</style></head><body>
+<div class="top">
+  <div class="dt" id="dt"></div>
+  <div class="row"><input type="date" id="di"><button type="button" class="sm" id="ap">All Present</button><button type="button" class="sm" id="rs">Reset</button></div>
+  <div class="cnt" id="cn"></div>
+</div>
+<div class="leg">Approved = Absent- Approved by mentor &nbsp;|&nbsp; POC = Process POC</div>
+<div class="list" id="ls">
+<div class="r" data-k="0"><div class="n"><i>1</i>Aditya Srivastava</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="1"><div class="n"><i>2</i>Adrija Majumdar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="2"><div class="n"><i>3</i>Agamjot Singh</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="3"><div class="n"><i>4</i>Akshat Chouhan</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="4"><div class="n"><i>5</i>Aryan Baheti</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="5"><div class="n"><i>6</i>Aryan Soni</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="6"><div class="n"><i>7</i>Bhavya Shivare</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="7"><div class="n"><i>8</i>Chinmayee Rajiv Topale</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="8"><div class="n"><i>9</i>Divyansh Sahu</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="9"><div class="n"><i>10</i>Gouri Nandana P</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="10"><div class="n"><i>11</i>Hardik Jain</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="11"><div class="n"><i>12</i>Jahanvi Goswami</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="12"><div class="n"><i>13</i>Kabir Sethi</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="13"><div class="n"><i>14</i>Krish Niraj Jain</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="14"><div class="n"><i>15</i>Kushagra Bafna</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="15"><div class="n"><i>16</i>Manjot Kaur</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="16"><div class="n"><i>17</i>Megavath Karthik</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="17"><div class="n"><i>18</i>Naman Gautam</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="18"><div class="n"><i>19</i>Palak Sagar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="19"><div class="n"><i>20</i>Purab Shah</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="20"><div class="n"><i>21</i>Rajveer Jat</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="21"><div class="n"><i>22</i>Rahul Sinha</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="22"><div class="n"><i>23</i>Riyansh Garg</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="23"><div class="n"><i>24</i>Rohit Agrawal</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="24"><div class="n"><i>25</i>Saad Yunus Shaikh</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="25"><div class="n"><i>26</i>Shruti Kumari</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="26"><div class="n"><i>27</i>Shubham Kumar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="27"><div class="n"><i>28</i>Siya Rastogi</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="28"><div class="n"><i>29</i>Spandan Parida</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="29"><div class="n"><i>30</i>Yashwant Kumar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+</div>
+<div class="out"><h3 style="margin:8px 0">Final list</h3><div class="pv" id="pv"></div><textarea id="ta" readonly></textarea></div>
+<div class="bot"><button type="button" id="c1">Copy text</button><button type="button" id="c2">Copy with bold</button></div>
+<div class="msg" id="ms">Copied!</div>
+<script>
+var NAMES=["Aditya Srivastava", "Adrija Majumdar", "Agamjot Singh", "Akshat Chouhan", "Aryan Baheti", "Aryan Soni", "Bhavya Shivare", "Chinmayee Rajiv Topale", "Divyansh Sahu", "Gouri Nandana P", "Hardik Jain", "Jahanvi Goswami", "Kabir Sethi", "Krish Niraj Jain", "Kushagra Bafna", "Manjot Kaur", "Megavath Karthik", "Naman Gautam", "Palak Sagar", "Purab Shah", "Rajveer Jat", "Rahul Sinha", "Riyansh Garg", "Rohit Agrawal", "Saad Yunus Shaikh", "Shruti Kumari", "Shubham Kumar", "Siya Rastogi", "Spandan Parida", "Yashwant Kumar"];
+var ST=["Present","Absent","Absent- Approved by mentor","Process POC","Shortlisted"];
+var S=[],H="";
+for(var i=0;i<NAMES.length;i++)S.push(-1);
+function $(i){return document.getElementById(i)}
+function p2(n){return n<10?"0"+n:""+n}
+var D=new Date();$("di").value=D.getFullYear()+"-"+p2(D.getMonth()+1)+"-"+p2(D.getDate());
+function ds(){var v=$("di").value;if(!v)return"";var a=v.split("-");var d=new Date(+a[0],+a[1]-1,+a[2]);
+ var W=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],M=["January","February","March","April","May","June","July","August","September","October","November","December"];
+ return W[d.getDay()]+", "+d.getDate()+" "+M[d.getMonth()]+" "+d.getFullYear()}
+function paint(){
+ var rows=$("ls").children;
+ for(var k=0;k<rows.length;k++){var b=rows[k].getElementsByTagName("button");for(var i=0;i<b.length;i++)b[i].className="o"+(S[k]===i?" on":"")}
+}
+function out(){
+ var head=ds(),txt="*"+head+"*\n",pv="<b>"+head+"</b><br>",cn=[];H="<p><b>"+head+"</b></p>";
+ var g=[];for(var s=0;s<5;s++)g.push([]);var nm=[];
+ for(var k=0;k<NAMES.length;k++){if(S[k]<0)nm.push(NAMES[k]);else g[S[k]].push(NAMES[k])}
+ var G=[];for(s=0;s<5;s++)G.push([ST[s],g[s]]);if(nm.length)G.push(["Not marked",nm]);
+ for(var j=0;j<G.length;j++){var t=G[j][0]+" ("+G[j][1].length+")";
+  txt+="\n*"+t+"*\n";pv+="<br><b>"+t+"</b><br>";H+="<p><b>"+t+"</b><br>";
+  for(var q=0;q<G[j][1].length;q++){var l=(q+1)+". "+G[j][1][q];txt+=l+"\n";pv+=l+"<br>";H+=l+"<br>"}
+  if(!G[j][1].length){txt+="-\n";pv+="-<br>";H+="-<br>"}H+="</p>"}
+ $("ta").value=txt.replace(/\s+$/,"");$("pv").innerHTML=pv;
+ $("dt").textContent=head;
+ var c=[];for(s=0;s<5;s++)c.push(ST[s].replace("Absent- Approved by mentor","Approved").replace("Process POC","POC")+": "+g[s].length);
+ $("cn").textContent=c.join("  |  ")+"  |  Left: "+nm.length;
+}
+function upd(){paint();out()}
+$("ls").onclick=function(e){var b=e.target;while(b&&b!==this&&!(b.className||"").match(/\bo\b/))b=b.parentNode;
+ if(!b||b===this)return;var k=+b.parentNode.parentNode.getAttribute("data-k"),s=+b.getAttribute("data-s");S[k]=(S[k]===s)?-1:s;upd()};
+$("ap").onclick=function(){for(var i=0;i<S.length;i++)S[i]=0;upd()};
+$("rs").onclick=function(){for(var i=0;i<S.length;i++)S[i]=-1;upd()};
+$("di").onchange=out;
+function ok(){var m=$("ms");m.style.display="block";setTimeout(function(){m.style.display="none"},1600)}
+function fb(){var t=$("ta");t.removeAttribute("readonly");t.focus();t.select();t.setSelectionRange(0,99999);try{document.execCommand("copy");ok()}catch(e){}t.setAttribute("readonly","")}
+$("c1").onclick=function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText($("ta").value).then(ok,fb)}else fb()};
+$("c2").onclick=function(){
+ try{navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([H],{type:"text/html"}),"text/plain":new Blob([$("ta").value],{type:"text/plain"})})]).then(ok,rich2)}catch(e){rich2()}};
+function rich2(){try{var r=document.createRange();r.selectNodeContents($("pv"));var s=window.getSelection();s.removeAllRanges();s.addRange(r);document.execCommand("copy");s.removeAllRanges();ok()}catch(e){fb()}}
+upd();
+</script></body></html>
