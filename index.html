@@ -89,9 +89,9 @@ function out(){
  var g=[];for(var s=0;s<5;s++)g.push([]);var nm=[];
  for(var k=0;k<NAMES.length;k++){if(S[k]<0)nm.push(NAMES[k]);else g[S[k]].push(NAMES[k])}
  var G=[];for(s=0;s<5;s++)G.push([ST[s],g[s]]);if(nm.length)G.push(["Not marked",nm]);
- for(var j=0;j<G.length;j++){if(!G[j][1].length)continue;var poc=(G[j][0]===ST[3]);var t=poc?G[j][0]:G[j][0]+" ("+G[j][1].length+")";
-  txt+="\n*"+t+"*\n";pv+="<br><b>"+t+"</b><br>";H+="<p><b>"+t+"</b>"+(poc?"":"<br>");
-  if(!poc)for(var q=0;q<G[j][1].length;q++){var l=(q+1)+". "+G[j][1][q];txt+=l+"\n";pv+=l+"<br>";H+=l+"<br>"}
+ for(var j=0;j<G.length;j++){if(!G[j][1].length)continue;var t=G[j][0]+" ("+G[j][1].length+")";
+  txt+="\n*"+t+"*\n";pv+="<br><b>"+t+"</b><br>";H+="<p><b>"+t+"</b>"+"<br>";
+  for(var q=0;q<G[j][1].length;q++){var l=(q+1)+". "+G[j][1][q];txt+=l+"\n";pv+=l+"<br>";H+=l+"<br>"}
   H+="</p>"}
  $("ta").value=txt.replace(/\s+$/,"");$("pv").innerHTML=pv;
  $("dt").textContent=head;
