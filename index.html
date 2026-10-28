@@ -3,39 +3,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Attendance Portal</title>
 <style>
-:root{--bg:#f4f5f7;--card:#fff;--tx:#16181d;--mut:#6b7280;--bd:#dfe3e8;--ac:#2f5bea}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1114;--card:#1a1d22;--tx:#eef0f3;--mut:#9aa1ad;--bd:#2c3038;--ac:#6b8cff}}
-:root[data-theme="dark"]{--bg:#0f1114;--card:#1a1d22;--tx:#eef0f3;--mut:#9aa1ad;--bd:#2c3038;--ac:#6b8cff}
+:root{--bg:#ffffff;--sub:#eef3f5;color-scheme:light;--card:#fff;--tx:#161a26;--mut:#6b7385;--bd:#d9e7ec;--ac:#0284c7;--sh:0 1px 3px rgba(20,30,70,.08),0 4px 14px rgba(20,30,70,.06)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
-body{background:var(--bg);color:var(--tx);font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;padding:0 0 90px}
-.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 8px) 12px 8px;border-bottom:1px solid var(--bd)}
-.dt{font-size:18px;font-weight:800;margin:0 0 6px}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;padding:0 0 96px}
+button{font:inherit;touch-action:manipulation;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;cursor:pointer}
+.top{position:sticky;top:0;z-index:5;background:linear-gradient(135deg,#0284c7,#0d9488);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 12px;border-radius:0 0 20px 20px;box-shadow:0 6px 20px rgba(2,132,199,.35)}
+.ttl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-weight:700}
+.dt{font-size:20px;font-weight:800;margin:2px 0 10px}
 .row{display:flex;gap:6px;align-items:center}
-input[type=date]{flex:1;min-width:0;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font:inherit;font-size:15px}
-.cnt{font-size:12px;color:var(--mut);margin-top:6px}
-.leg{font-size:11px;color:var(--mut);padding:6px 12px 0}
+input[type=date]{flex:1;min-width:0;padding:9px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.18);color:#fff;color-scheme:dark;font:inherit;font-size:15px}
+.sm{font-size:13px;font-weight:600;padding:9px 11px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.cnt{font-size:12px;color:rgba(255,255,255,.92);margin-top:9px}
+.pbw{height:5px;border-radius:5px;background:rgba(255,255,255,.25);margin-top:8px;overflow:hidden}
+#pb{height:100%;width:0;background:#fff;border-radius:5px;transition:width .25s}
+.leg{font-size:11px;color:var(--mut);padding:10px 16px 0}
 .list{padding:8px 12px}
-.r{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px;margin-bottom:6px}
-.n{font-weight:600;font-size:15px;margin-bottom:6px}.n i{font-style:normal;color:var(--mut);font-weight:400;display:inline-block;min-width:22px}
-.g{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
-button{font:inherit;touch-action:manipulation;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:8px;cursor:pointer}
-.o{font-size:11.5px;padding:9px 0;background:transparent}
-.o.on{color:#fff;font-weight:700;border-color:transparent}
+.r{background:var(--card);border:1px solid var(--bd);border-left:5px solid var(--bd);border-radius:14px;padding:10px;margin-bottom:9px;box-shadow:var(--sh);transition:background .15s,border-color .15s}
+.r:has(.o.on[data-s="0"]){border-left-color:#16a34a;background:rgba(22,163,74,.09)}
+.r:has(.o.on[data-s="1"]){border-left-color:#dc2626;background:rgba(220,38,38,.09)}
+.r:has(.o.on[data-s="2"]){border-left-color:#d97706;background:rgba(217,119,6,.10)}
+.r:has(.o.on[data-s="3"]){border-left-color:#7c3aed;background:rgba(124,58,237,.10)}
+.r:has(.o.on[data-s="4"]){border-left-color:#2563eb;background:rgba(37,99,235,.09)}
+.n{font-weight:600;font-size:15px;margin-bottom:8px;display:flex;align-items:center}
+.n i{font-style:normal;background:var(--sub);color:var(--mut);font-weight:700;font-size:11px;width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;margin-right:9px;flex:none}
+.g{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.o{font-size:11.5px;font-weight:500;padding:10px 0;background:var(--sub)}
+.o.on{color:#fff;font-weight:700;border-color:transparent;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .o.on[data-s="0"]{background:#16a34a}.o.on[data-s="1"]{background:#dc2626}.o.on[data-s="2"]{background:#d97706}.o.on[data-s="3"]{background:#7c3aed}.o.on[data-s="4"]{background:#2563eb}
-.sm{font-size:13px;padding:8px 10px}
 .out{padding:0 12px 12px}
-.pv{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;line-height:1.55;font-size:14px}
-textarea{width:100%;height:160px;margin-top:8px;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:13px/1.45 ui-monospace,Menlo,monospace}
-.bot{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--bg);border-top:1px solid var(--bd);padding:8px 12px calc(env(safe-area-inset-bottom,0px) + 8px);display:flex;gap:8px}
-.bot button{flex:1;background:var(--ac);color:#fff;border-color:var(--ac);font-weight:700;font-size:14px;padding:12px 6px}
-.msg{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:#16a34a;color:#fff;padding:8px 14px;border-radius:20px;font-size:13px;display:none;z-index:9}
+.out h3{margin:14px 4px 8px;font-size:16px}
+.pv{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;line-height:1.6;font-size:14px;box-shadow:var(--sh)}
+textarea{width:100%;height:160px;margin-top:10px;padding:12px;border:1px solid var(--bd);border-radius:14px;background:var(--card);color:var(--tx);font:13px/1.45 ui-monospace,Menlo,monospace}
+.bot{position:fixed;left:0;right:0;bottom:0;z-index:6;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--bd);padding:10px 12px calc(env(safe-area-inset-bottom,0px) + 10px);display:flex;gap:8px}
+.bot button{flex:1;background:linear-gradient(135deg,#0284c7,#0d9488);color:#fff;border:0;font-weight:700;font-size:14px;padding:13px 6px;border-radius:12px;box-shadow:0 4px 12px rgba(2,132,199,.35)}
+.msg{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:#16a34a;color:#fff;padding:9px 16px;border-radius:20px;font-size:13px;font-weight:600;display:none;z-index:9;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 </style></head><body>
 <div id="app">
 <div class="top">
-  <div class="dt" id="dt"></div>
+  <div class="ttl">📋 Attendance Portal</div><div class="dt" id="dt"></div>
   <div class="row"><input type="date" id="di"><button type="button" class="sm" id="ap">All Present</button><button type="button" class="sm" id="rs">Reset</button></div>
-  <div class="cnt" id="cn"></div>
+  <div class="cnt" id="cn"></div><div class="pbw"><div id="pb"></div></div>
 </div>
 <div class="leg">Approved = Absent- Approved by mentor &nbsp;|&nbsp; POC = Process/GL POC</div>
 <div class="list" id="ls">
@@ -97,7 +105,7 @@ function out(){
  var c=[];for(s=0;s<5;s++)c.push(ST[s].replace("Absent- Approved by mentor","Approved").replace("Process/GL POC","POC")+": "+g[s].length);
  $("cn").textContent=c.join("  |  ")+"  |  Left: "+nm.length;
 }
-function upd(){paint();out()}
+function upd(){paint();out();$("pb").style.width=Math.round((NAMES.length-S.filter(function(x){return x<0}).length)/NAMES.length*100)+"%"}
 $("ls").onclick=function(e){var b=e.target;while(b&&b!==this&&!(b.className||"").match(/\bo\b/))b=b.parentNode;
  if(!b||b===this)return;var k=+b.parentNode.parentNode.getAttribute("data-k"),s=+b.getAttribute("data-s");S[k]=(S[k]===s)?-1:s;upd()};
 $("ap").onclick=function(){for(var i=0;i<S.length;i++)S[i]=0;upd()};
