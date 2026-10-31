@@ -27,7 +27,7 @@ input[type=date]{flex:1;min-width:0;padding:9px;border:1px solid rgba(255,255,25
 .r:has(.o.on[data-s="4"]){border-left-color:#2563eb;background:rgba(37,99,235,.09)}
 .n{font-weight:600;font-size:15px;margin-bottom:8px;display:flex;align-items:center}
 .n i{font-style:normal;background:var(--sub);color:var(--mut);font-weight:700;font-size:11px;width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;margin-right:9px;flex:none}
-.g{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.g{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .o{font-size:11.5px;font-weight:500;padding:10px 0;background:var(--sub)}
 .o.on{color:#fff;font-weight:700;border-color:transparent;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .o.on[data-s="0"]{background:#16a34a}.o.on[data-s="1"]{background:#dc2626}.o.on[data-s="2"]{background:#d97706}.o.on[data-s="3"]{background:#7c3aed}.o.on[data-s="4"]{background:#2563eb}
@@ -38,47 +38,105 @@ textarea{width:100%;height:160px;margin-top:10px;padding:12px;border:1px solid v
 .bot{position:fixed;left:0;right:0;bottom:0;z-index:6;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--bd);padding:10px 12px calc(env(safe-area-inset-bottom,0px) + 10px);display:flex;gap:8px}
 .bot button{flex:1;background:linear-gradient(135deg,#0284c7,#0d9488);color:#fff;border:0;font-weight:700;font-size:14px;padding:13px 6px;border-radius:12px;box-shadow:0 4px 12px rgba(2,132,199,.35)}
 .msg{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:#16a34a;color:#fff;padding:9px 16px;border-radius:20px;font-size:13px;font-weight:600;display:none;z-index:9;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.o{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:3px;padding-right:3px}
+.o.on[data-s="5"]{background:#0d9488}.o.on[data-s="6"]{background:#db2777}
+.r:has(.o.on[data-s="5"]){border-left-color:#0d9488;background:rgba(13,148,136,.10)}
+.r:has(.o.on[data-s="6"]){border-left-color:#db2777;background:rgba(219,39,119,.09)}
+.cust{padding:10px 12px 0}.cl{font-size:12px;color:var(--mut);margin:0 4px 6px}.cr{display:flex;gap:8px}
+.cr input{flex:1;min-width:0;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;font-size:14px}
+#sq{width:100%;margin-top:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.4);border-radius:12px;background:rgba(255,255,255,.22);color:#fff;font:inherit;font-size:15px;-webkit-appearance:none;appearance:none}
+#sq::placeholder{color:rgba(255,255,255,.85)}
+.top{position:relative}
+.fbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 8px) 12px 8px;border-bottom:1px solid var(--bd);box-shadow:0 4px 12px rgba(20,30,70,.06)}
+#sq{width:100%;margin:0;padding:10px 12px;border:1px solid var(--bd);border-radius:12px;background:var(--sub);color:var(--tx);font:inherit;font-size:15px;-webkit-appearance:none;appearance:none}
+#sq::placeholder{color:var(--mut)}
+.chips{display:flex;gap:6px;margin-top:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.chip{flex:none;padding:7px 12px;border-radius:20px;font-size:13px;font-weight:600;background:var(--sub);border:1px solid var(--bd)}
+.chip.on{background:linear-gradient(135deg,#0284c7,#0d9488);color:#fff;border-color:transparent}
+.nn{flex:1;min-width:0}
+.rl{margin-left:8px;flex:none;font-size:11px;font-weight:500;color:var(--mut);white-space:nowrap}
+.opts{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--mut);margin:0 4px 10px}
+.opts label{display:flex;gap:5px;align-items:center;color:var(--tx)}
+.row{flex-wrap:wrap}.row input[type=date]{flex:1 1 100%}.row .sm{flex:1;padding:9px 6px}
+
+/* cleaner look */
+body{background:#fff}
+.top{padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px;border-radius:0 0 18px 18px;box-shadow:none}
+.ttl{display:none}
+.dt{font-size:19px;margin:0 0 10px}
+.cnt{font-size:11.5px;opacity:.9}
+.set{margin:8px 12px 0}
+.set>summary,.pt>summary{list-style:none;cursor:pointer;font-size:13px;color:var(--mut);padding:6px 4px}
+.set>summary::-webkit-details-marker,.pt>summary::-webkit-details-marker{display:none}
+.set[open]>summary{color:var(--ac)}
+.set .leg{padding:4px 4px 0}.set .cust{padding:8px 0 6px}
+.fbar{box-shadow:none;border-bottom:1px solid var(--bd)}
+.chip{font-size:12.5px;padding:6px 11px;font-weight:600;color:var(--mut);background:transparent}
+.chip.on{color:#fff}
+.list{padding:10px 12px}
+.r{box-shadow:none;border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px}
+.r:has(.o.on[data-s="0"]){border-color:rgba(22,163,74,.5);background:rgba(22,163,74,.06)}
+.r:has(.o.on[data-s="1"]){border-color:rgba(220,38,38,.5);background:rgba(220,38,38,.06)}
+.r:has(.o.on[data-s="2"]){border-color:rgba(217,119,6,.5);background:rgba(217,119,6,.07)}
+.r:has(.o.on[data-s="3"]){border-color:rgba(124,58,237,.5);background:rgba(124,58,237,.07)}
+.r:has(.o.on[data-s="4"]){border-color:rgba(37,99,235,.5);background:rgba(37,99,235,.06)}
+.r:has(.o.on[data-s="5"]){border-color:rgba(13,148,136,.5);background:rgba(13,148,136,.07)}
+.r:has(.o.on[data-s="6"]){border-color:rgba(219,39,119,.5);background:rgba(219,39,119,.06)}
+.n{font-size:15px;margin-bottom:8px}
+.n i{background:none;width:auto;height:auto;line-height:1.2;text-align:left;margin-right:6px;min-width:18px;font-size:12px;font-weight:500;color:var(--mut)}
+.g{gap:4px}
+.o{border:0;border-radius:8px;background:var(--sub);color:var(--mut);font-weight:500;padding:9px 0}
+.o.on{color:#fff;box-shadow:none}
+.pv{box-shadow:none;border-radius:12px}
+.out h3{font-size:15px;color:var(--tx)}
+.pt{margin-top:6px}.pt textarea{margin-top:4px;height:140px}
+.bot{box-shadow:none}.bot button{box-shadow:none;border-radius:10px}
 </style></head><body>
 <div id="app">
 <div class="top">
   <div class="ttl">📋 Attendance Portal</div><div class="dt" id="dt"></div>
-  <div class="row"><input type="date" id="di"><button type="button" class="sm" id="ap">All Present</button><button type="button" class="sm" id="rs">Reset</button></div>
+  <div class="row"><input type="date" id="di"><button type="button" class="sm" id="ap">All Present</button><button type="button" class="sm" id="aa">All Absent</button><button type="button" class="sm" id="rs">Reset</button></div>
   <div class="cnt" id="cn"></div><div class="pbw"><div id="pb"></div></div>
 </div>
-<div class="leg">Approved = Absent- Approved by mentor &nbsp;|&nbsp; POC = Process/GL POC</div>
+<details class="set"><summary>⚙️ Options &amp; custom titles</summary><div class="leg">Approved = Absent- Approved by mentor &nbsp;|&nbsp; POC = Process/GL POC</div>
+<div class="cust"><div class="cl">Extra options — type your own titles (e.g. Class):</div><div class="cr"><input id="t5" placeholder="Custom 1 title" maxlength="30"><input id="t6" placeholder="Custom 2 title" maxlength="30"></div></div></details>
+<div class="fbar"><input id="sq" type="search" placeholder="🔍 Search name or roll no…" autocomplete="off" autocapitalize="none"><div class="chips" id="chips"><button type="button" class="chip on" data-sec="All">All (24)</button><button type="button" class="chip" data-sec="A">Sec A (5)</button><button type="button" class="chip" data-sec="B">Sec B (5)</button><button type="button" class="chip" data-sec="C">Sec C (5)</button><button type="button" class="chip" data-sec="D">Sec D (3)</button><button type="button" class="chip" data-sec="E">Sec E (6)</button></div></div>
+<div id="nm" class="leg" style="display:none;text-align:center;padding:14px">No names match your search.</div>
 <div class="list" id="ls">
-<div class="r" data-k="0"><div class="n"><i>1</i>Aditya Srivastava</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="1"><div class="n"><i>2</i>Agamjot Singh</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="2"><div class="n"><i>3</i>Akshat Chouhan</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="3"><div class="n"><i>4</i>Aryan Soni</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="4"><div class="n"><i>5</i>Bhavya Shivare</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="5"><div class="n"><i>6</i>Chinmayee Rajiv Topale</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="6"><div class="n"><i>7</i>Divyansh Sahu</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="7"><div class="n"><i>8</i>Gouri Nandana P</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="8"><div class="n"><i>9</i>Hardik Jain</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="9"><div class="n"><i>10</i>Kabir Sethi</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="10"><div class="n"><i>11</i>Kushagra Bafna</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="11"><div class="n"><i>12</i>Manjot Kaur</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="12"><div class="n"><i>13</i>Naman Gautam</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="13"><div class="n"><i>14</i>Palak Sagar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="14"><div class="n"><i>15</i>Purab Shah</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="15"><div class="n"><i>16</i>Rajveer Jat</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="16"><div class="n"><i>17</i>Rahul Sinha</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="17"><div class="n"><i>18</i>Riyansh Garg</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="18"><div class="n"><i>19</i>Saad Yunus Shaikh</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="19"><div class="n"><i>20</i>Shruti Kumari</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="20"><div class="n"><i>21</i>Shubham Kumar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="21"><div class="n"><i>22</i>Siya Rastogi</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="22"><div class="n"><i>23</i>Spandan Parida</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
-<div class="r" data-k="23"><div class="n"><i>24</i>Yashwant Kumar</div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button></div></div>
+<div class="r" data-k="0" data-sec="D"><div class="n"><i>1</i><span class="nn">Aditya Srivastava</span><span class="rl">PGP17151 · Sec D</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="1" data-sec="E"><div class="n"><i>2</i><span class="nn">Agamjot Singh</span><span class="rl">PGP17200 · Sec E</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="2" data-sec="A"><div class="n"><i>3</i><span class="nn">Akshat Chouhan</span><span class="rl">PGP17003 · Sec A</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="3" data-sec="E"><div class="n"><i>4</i><span class="nn">Aryan Soni</span><span class="rl">PGP17262 · Sec E</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="4" data-sec="E"><div class="n"><i>5</i><span class="nn">Bhavya Shivare</span><span class="rl">PGP17212 · Sec E</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="5" data-sec="A"><div class="n"><i>6</i><span class="nn">Chinmayee Rajiv Topale</span><span class="rl">PGP17049 · Sec A</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="6" data-sec="E"><div class="n"><i>7</i><span class="nn">Divyansh Sahu</span><span class="rl">IPM05026 · Sec E</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="7" data-sec="B"><div class="n"><i>8</i><span class="nn">Gouri Nandana P</span><span class="rl">PGP17085 · Sec B</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="8" data-sec="B"><div class="n"><i>9</i><span class="nn">Hardik Jain</span><span class="rl">PGP17060 · Sec B</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="9" data-sec="E"><div class="n"><i>10</i><span class="nn">Kabir Sethi</span><span class="rl">PGP17208 · Sec E</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="10" data-sec="C"><div class="n"><i>11</i><span class="nn">Kushagra Bafna</span><span class="rl">PGP17112 · Sec C</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="11" data-sec="C"><div class="n"><i>12</i><span class="nn">Manjot Kaur</span><span class="rl">IPM05041 · Sec C</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="12" data-sec="D"><div class="n"><i>13</i><span class="nn">Naman Gautam</span><span class="rl">PGP17164 · Sec D</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="13" data-sec="C"><div class="n"><i>14</i><span class="nn">Palak Sagar</span><span class="rl">PGP17139 · Sec C</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="14" data-sec="E"><div class="n"><i>15</i><span class="nn">Purab Shah</span><span class="rl">PGP17216 · Sec E</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="15" data-sec="C"><div class="n"><i>16</i><span class="nn">Rajveer Jat</span><span class="rl">PGP17119 · Sec C</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="16" data-sec="B"><div class="n"><i>17</i><span class="nn">Rahul Sinha</span><span class="rl">PGP17070 · Sec B</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="17" data-sec="C"><div class="n"><i>18</i><span class="nn">Riyansh Garg</span><span class="rl">PGP17260 · Sec C</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="18" data-sec="A"><div class="n"><i>19</i><span class="nn">Saad Yunus Shaikh</span><span class="rl">PGP17022 · Sec A</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="19" data-sec="D"><div class="n"><i>20</i><span class="nn">Shruti Kumari</span><span class="rl">PGP17193 · Sec D</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="20" data-sec="A"><div class="n"><i>21</i><span class="nn">Shubham Kumar</span><span class="rl">IPM05060 · Sec A</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="21" data-sec="A"><div class="n"><i>22</i><span class="nn">Siya Rastogi</span><span class="rl">PGP17044 · Sec A</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="22" data-sec="B"><div class="n"><i>23</i><span class="nn">Spandan Parida</span><span class="rl">IPM05140 · Sec B</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
+<div class="r" data-k="23" data-sec="B"><div class="n"><i>24</i><span class="nn">Yashwant Kumar</span><span class="rl">PGP17259 · Sec B</span></div><div class="g"><button type="button" class="o" data-s="0">Present</button><button type="button" class="o" data-s="1">Absent</button><button type="button" class="o" data-s="2">Approved</button><button type="button" class="o" data-s="3">POC</button><button type="button" class="o" data-s="4">Shortlist</button><button type="button" class="o" data-s="5">Custom 1</button><button type="button" class="o" data-s="6">Custom 2</button></div></div>
 </div>
-<div class="out"><h3 style="margin:8px 0">Final list</h3><div class="pv" id="pv"></div><textarea id="ta" readonly></textarea></div>
+<div class="out"><h3 style="margin:8px 0">Final list</h3><div class="opts"><span>Add to final list:</span><label><input type="checkbox" id="oR"> Roll no.</label><label><input type="checkbox" id="oS"> Section</label></div><div class="pv" id="pv"></div><details id="pd" class="pt"><summary>Plain text version (*bold* markers)</summary><textarea id="ta" readonly></textarea></details></div>
 <div class="bot"><button type="button" id="c1">Copy text</button><button type="button" id="c2">Copy with bold</button></div>
 <div class="msg" id="ms">Copied!</div>
 </div>
 <script>
 var NAMES=["Aditya Srivastava","Agamjot Singh","Akshat Chouhan","Aryan Soni","Bhavya Shivare","Chinmayee Rajiv Topale","Divyansh Sahu","Gouri Nandana P","Hardik Jain","Kabir Sethi","Kushagra Bafna","Manjot Kaur","Naman Gautam","Palak Sagar","Purab Shah","Rajveer Jat","Rahul Sinha","Riyansh Garg","Saad Yunus Shaikh","Shruti Kumari","Shubham Kumar","Siya Rastogi","Spandan Parida","Yashwant Kumar"];
-var ST=["Present","Absent","Absent- Approved by mentor","Process/GL POC","Shortlisted"];
+var ROLL=["PGP17151","PGP17200","PGP17003","PGP17262","PGP17212","PGP17049","IPM05026","PGP17085","PGP17060","PGP17208","PGP17112","IPM05041","PGP17164","PGP17139","PGP17216","PGP17119","PGP17070","PGP17260","PGP17022","PGP17193","IPM05060","PGP17044","IPM05140","PGP17259"];
+var SEC=["D","E","A","E","E","A","E","B","B","E","C","C","D","C","E","C","B","C","A","D","A","A","B","B"];
+var ST=["Present","Absent","Absent- Approved by mentor","Process/GL POC","Shortlisted","Custom 1","Custom 2"];
 var S=[],H="";
 for(var i=0;i<NAMES.length;i++)S.push(-1);
 function $(i){return document.getElementById(i)}
@@ -91,32 +149,44 @@ function paint(){
  var rows=$("ls").children;
  for(var k=0;k<rows.length;k++){var b=rows[k].getElementsByTagName("button");for(var i=0;i<b.length;i++)b[i].className="o"+(S[k]===i?" on":"")}
 }
+function lab(k){var x=NAMES[k];if($("oR").checked)x+=" - "+ROLL[k];if($("oS").checked)x+=" (Sec "+SEC[k]+")";return x}
 function out(){
  var head=ds(),txt="*"+head+"*\n",pv="<b>"+head+"</b><br>",cn=[];H="<p><b>"+head+"</b></p>";
- var g=[];for(var s=0;s<5;s++)g.push([]);var nm=[];
- for(var k=0;k<NAMES.length;k++){if(S[k]<0)nm.push(NAMES[k]);else g[S[k]].push(NAMES[k])}
- var G=[];for(s=0;s<5;s++)G.push([ST[s],g[s]]);if(nm.length)G.push(["Not marked",nm]);
+ var g=[];for(var s=0;s<7;s++)g.push([]);var nm=[];
+ for(var k=0;k<NAMES.length;k++){if(S[k]<0)nm.push(lab(k));else g[S[k]].push(lab(k))}
+ var G=[];for(s=0;s<7;s++)G.push([ST[s],g[s]]);if(nm.length)G.push(["Not marked",nm]);
  for(var j=0;j<G.length;j++){if(!G[j][1].length)continue;var t=G[j][0]+" ("+G[j][1].length+")";
   txt+="\n*"+t+"*\n";pv+="<br><b>"+t+"</b><br>";H+="<p><b>"+t+"</b>"+"<br>";
   for(var q=0;q<G[j][1].length;q++){var l=(q+1)+". "+G[j][1][q];txt+=l+"\n";pv+=l+"<br>";H+=l+"<br>"}
   H+="</p>"}
  $("ta").value=txt.replace(/\s+$/,"");$("pv").innerHTML=pv;
  $("dt").textContent=head;
- var c=[];for(s=0;s<5;s++)c.push(ST[s].replace("Absent- Approved by mentor","Approved").replace("Process/GL POC","POC")+": "+g[s].length);
+ var c=[];for(s=0;s<7;s++)if(s<5||g[s].length)c.push(ST[s].replace("Absent- Approved by mentor","Approved").replace("Process/GL POC","POC")+": "+g[s].length);
  $("cn").textContent=c.join("  |  ")+"  |  Left: "+nm.length;
 }
 function upd(){paint();out();$("pb").style.width=Math.round((NAMES.length-S.filter(function(x){return x<0}).length)/NAMES.length*100)+"%"}
 $("ls").onclick=function(e){var b=e.target;while(b&&b!==this&&!(b.className||"").match(/\bo\b/))b=b.parentNode;
  if(!b||b===this)return;var k=+b.parentNode.parentNode.getAttribute("data-k"),s=+b.getAttribute("data-s");S[k]=(S[k]===s)?-1:s;upd()};
-$("ap").onclick=function(){for(var i=0;i<S.length;i++)S[i]=0;upd()};
+$("ap").onclick=function(){var rows=$("ls").children;for(var i=0;i<S.length;i++)if(rows[i].style.display!=="none")S[i]=0;upd()};
+$("aa").onclick=function(){var rows=$("ls").children;for(var i=0;i<S.length;i++)if(rows[i].style.display!=="none")S[i]=1;upd()};
 $("rs").onclick=function(){for(var i=0;i<S.length;i++)S[i]=-1;upd()};
 $("di").onchange=out;
 function ok(){var m=$("ms");m.style.display="block";setTimeout(function(){m.style.display="none"},1600)}
-function fb(){var t=$("ta");t.removeAttribute("readonly");t.focus();t.select();t.setSelectionRange(0,99999);try{document.execCommand("copy");ok()}catch(e){}t.setAttribute("readonly","")}
+function fb(){$("pd").open=true;var t=$("ta");t.removeAttribute("readonly");t.focus();t.select();t.setSelectionRange(0,99999);try{document.execCommand("copy");ok()}catch(e){}t.setAttribute("readonly","")}
 $("c1").onclick=function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText($("ta").value).then(ok,fb)}else fb()};
 $("c2").onclick=function(){
  try{navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([H],{type:"text/html"}),"text/plain":new Blob([$("ta").value],{type:"text/plain"})})]).then(ok,rich2)}catch(e){rich2()}};
 function rich2(){try{var r=document.createRange();r.selectNodeContents($("pv"));var s=window.getSelection();s.removeAllRanges();s.addRange(r);document.execCommand("copy");s.removeAllRanges();ok()}catch(e){fb()}}
 
+
+function ctitle(){for(var n=5;n<7;n++){var v=$("t"+n).value.replace(/[<>&*]/g,"").replace(/^\s+|\s+$/g,"").slice(0,30);ST[n]=v||("Custom "+(n-4));var bs=document.querySelectorAll('.o[data-s="'+n+'"]');for(var i=0;i<bs.length;i++)bs[i].textContent=ST[n];try{localStorage.setItem("att_t"+n,v)}catch(e){}}upd()}
+try{for(var n=5;n<7;n++){var sv=localStorage.getItem("att_t"+n);if(sv)$("t"+n).value=sv}}catch(e){}
+$("t5").oninput=ctitle;$("t6").oninput=ctitle;ctitle();
+
+var curSec="All";
+function filt(){var q=$("sq").value.toLowerCase().split(/\s+/).filter(Boolean),rows=$("ls").children,shown=0;for(var i=0;i<rows.length;i++){var nm=(NAMES[i]+" "+ROLL[i]).toLowerCase(),ok=q.every(function(x){return nm.indexOf(x)>-1})&&(curSec==="All"||SEC[i]===curSec);rows[i].style.display=ok?"":"none";if(ok)shown++}$("nm").style.display=shown?"none":"block"}
+$("chips").onclick=function(e){var b=e.target;if(!b||!b.getAttribute||!b.getAttribute("data-sec"))return;curSec=b.getAttribute("data-sec");var c=this.children;for(var i=0;i<c.length;i++)c[i].className="chip"+(c[i]===b?" on":"");filt()};
+$("oR").onchange=upd;$("oS").onchange=upd;
+$("sq").oninput=filt;$("sq").onsearch=filt;
 upd();
 </script></body></html>
